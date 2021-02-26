@@ -1,0 +1,146 @@
+html {
+        font-size: 62.5%; /*ベースを10pxにしています*/
+}
+
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 1.6rem;
+    width:100%;
+    background-image: url(https://www.photolibrary.jp/mhd5/img517/450-20170323175701204219.jpg);
+}
+header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+h1{
+    font-size: 100%;
+}
+main{
+    width:100%;
+    display: block;
+    border-bottom:1px solid #ccc;
+    position:relative;
+}
+footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+}
+p{
+    font-size:200%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:200px;
+}
+ul{
+    padding: 0;
+    border-top: 1px solid #000000;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:96%;
+    font-size: 80%;
+    margin: 0 3%;
+    text-align: center;
+}
+li{
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #fff;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+    color:#0d7dfd;
+}
+li:hover{
+    background: #0d7dfd;
+    color:#fff;
+}
+textarea{
+  margin: 10px 3%;
+  width: 95%;
+  height: 100px;
+  font-size: 1.6rem;
+  box-shadow: 3px 3px 3px 3px #555;
+  background-color:rgb(241, 239, 239);
+}
+#key{
+    margin:0 3%;
+    width: 95%;
+    font-size: 1.6rem;
+    background-color: #e1efff;
+    box-shadow: 3px 3px 3px 3px #555;
+}
+table{
+    margin: 20px 3%;
+    border:1px solid #8dc3f5;
+    width:96%;
+    
+}
+th{
+    width:30%;
+    font-size:1.6rem;
+    background-color:#d0e7fc;
+    border-bottom: 1px solid #8dc3f5;
+}
+td{
+    font: size 1.6rem;
+    background-color:rgb(241, 239, 239);
+    border-bottom: 1px solid #8dc3f5;
+}
+
+h1.img{
+    width: 100%;
+}
+
+/* 日付けのセレクトボックスデザイン */
+
+.center {
+    text-align: center;
+    margin-top: 20px;
+  }
+.select{
+    font-size: 1.6rem;
+}
+
+/* 授業内容 */
+#classcontent{
+    width: 100%;
+    background-color: rgb(241, 239, 239);
+    border: 1px;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.side{
+    display: inline-flex;
+    display: -ms-flexbox;
+    display:-webkit-flex;
+    flex-direction: row;
+}
+
+.fun{
+    flex: 25%;
+}
+
+.badgelabel{
+    margin-right: 30px;
+}
+.badge{
+    font-size: 1.6rem;
+    width: 50%;
+    border: #000000 1px solid;
+    background-color: rgb(241, 239, 239);
+}
+
+.save{
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    width: 15%;
+    height: auto;
+    margin: 20px 20px;
+}

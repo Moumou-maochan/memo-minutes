@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>そろタッチ授業記録</title>
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+</head>
+<body>
+<header>
+<h1><img src="img/head_logo.PNG" alt="そろタッチロゴ画像"></h1>
+</header>
+<main id="minutes">
+    <!-- 日付 -->
+    <div  class="center" id="date">
+        <select class="select" name="年" id="year"></select>
+        <select class="select" name="月" id="month"></select>
+        <select class="select" name="日" id="day"></select>
+    </div>
+    <!-- 出席確認 -->
+    <div class="center">
+        <label for="出席者">出席者</label>
+        <select class="select" name="出席者" id="present"></select>
+        <input class="select" name="欠席者" id="absent" placeholder="欠席者"></input>
+        <input class="select" name="遅刻者" id="late" placeholder="遅刻者"></input>
+    </div>
+    <!-- 講師名 -->
+    <div class="center">
+        <input name="teacher" id="teacher" type="text" class="select" placeholder="講師名">
+    </div>
+    <!-- 授業内容 -->
+    <div class="center">
+        <table  id="classcontents">
+            <tr>
+                <th>授業内容</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>16:00~16:05</th>
+                <td>
+                    <input type="text" id="classcontent" value="動物クイズ">
+                </td>
+            </tr>
+            <tr>
+                <th>16:05~16:08</th>
+                <td>
+                    挨拶、出欠確認
+                </td>
+            </tr>
+            <tr>
+                <th>16:08~16:10</th>
+                <td>
+                    今週の結果発表
+                </td>
+            </tr>
+            <tr>
+                <th>16:10~16:30</th>
+                <td>
+                    <input type="text" name="" id="classcontent" value="そろメーター">
+                </td>
+            </tr>
+            <tr>
+                <th>16:30~16:40</th>
+                <td>
+                    <input type="text" name="" id="classcontent" value="紙テスト">
+                </td>
+            </tr>
+            <tr>
+                <th>16:40~16:48</th>
+                <td>
+                    <input type="text" name="" id="classcontent" value="よーいドン！（足し算、掛け算×各1回）">
+                </td>
+            </tr>
+            <tr>
+                <th>16:48~16:55</th>
+                <td>
+                    <input type="text" id="classcontent" value="よみリレー">
+                </td>
+            </tr>
+            <tr>
+                <th>16:55~17:00</th>
+                <td class="side">
+                    <label class="fun">アクアパーク</label>
+                    <input class="fun" type="text" id="classcontent" placeholder="名前を入力">
+                    <label class="fun">こども大使</label>
+                    <input class="fun"type="text" id="classcontent" placeholder="名前を入力">
+                </td>
+            </tr>
+            <tr>
+                <th>17:00</th>
+                <td>
+                    挨拶
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <textarea id="key" placeholder="報告/反省"></textarea>
+    <textarea id="memo" placeholder="次回改善点"></textarea>
+    <div class="center">
+        <label class="badgelabel">バッジ獲得者</label><input type="text" class="badge" placeholder="名前を入力">
+    </div>
+<div class="save">
+        <img src="img/しおり付きの本のアイコン素材.png" alt="セーブボタン" class="button" id="save">
+        <img src="img/はさみのアイコン素材 6.png" alt="クリアボタン" class="button" id="clear">
+</div>
+</main>
+
+<table id="list">
+<!-- ここに追加データが挿入される -->
+</table>
+
+<script>
+
+// 年：2020〜2023
+let y = ""
+for(let i = 2020; i <= 2023; i++){
+    y += `<option value"${i}">${i}年</option>`
+}
+$("#year").html(y);
+
+// 月：1〜12月
+let m = "";
+for(let i = 1; i <= 12; i++){
+    m += `<option value"${i}">${i}月</option>`
+}
+$("#month").html(m);
+
+//日:1~31
+let d = "";
+for(let i = 1; i <= 31; i++){
+    d +=`<option value"${i}">${i}日</option>`
+}
+$("#day").html(d);
+
+// 日付けのデザイン
+
+// 出席者数の記録
+let p = "";
+for(let i = 1; i <= 10; i++){
+    p +=`<option value"${i}">${i}人</option>`
+}
+$("#present").html(p);
+
+//1.Save クリックイベント
+$(function(){
+  //1.Save クリックイベント
+  $("#save").on("click", function(){
+    //ここにクリックした時の処理を書く
+    const key = $("#key").val();
+    const value = $("#memo").val();
+    localStorage.setItem(key,value);
+
+    const html = "<tr><th>"+ key +"</th><td>"+ value +"</td></tr>";
+    //const html =`<tr><th>${key}</th><td>${value}</td></tr>`;
+    $("#list").append(html);
+  });
+
+
+//2.clear クリックイベント
+$("#clear").on("click",function(){
+    //ローカルストレージを全削除
+    localStorage.clear();
+    //htmlから表示を削除
+    $("#list").empty();
+  })
+
+
+
+
+//3.ページ読み込み：保存データ取得表示
+
+for(let i = 0; i < localStorage.length; i++){
+    //keyをインデックスを使って取得
+    const key = localStorage.key(i);
+    //valueをkeyを使って取得
+    const value = localStorage.getItem(key); 
+    //htmlmにkeyとvalueを入れたものを設定する
+    const html = "<tr><th>"+ key +"</th><td>"+value +"</td></tr>";
+    //listにappendする
+    $("#list").append(html);
+  }
+});
+
+
+
+</script>
+
+<footer><small>そろタッチ議事録</small></footer>
+</body>
+</html>
