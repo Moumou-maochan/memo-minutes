@@ -9,6 +9,8 @@ body{
     font-size: 1.6rem;
     width:100%;
     background-image: url(https://i.ytimg.com/vi/RlpRylZvnVc/maxresdefault.jpg);
+    background-size: contain;
+    min-width: 1024px;
 }
 header{
     background-color: #fff;
@@ -94,6 +96,16 @@ h1.img{
     width: 100%;
 }
 
+button{
+    border: none;
+    background-color: transparent;
+    margin: 20px 20px;
+}
+
+.wrap{
+    overflow: hidden;
+}
+
 /* 日付けのセレクトボックスデザイン */
 
 .center {
@@ -140,7 +152,6 @@ h1.img{
 }
 
 .button{
-    width: 15%;
+    width: 50%;
     height: auto;
-    margin: 20px 20px;
 }
